@@ -1,0 +1,1 @@
+Tis is an Test File In a Static Folder
