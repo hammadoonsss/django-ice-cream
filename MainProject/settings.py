@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'static_precompiler'
 ]
 
 MIDDLEWARE = [
@@ -120,12 +121,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+#  STATIC FILES
 STATIC_URL = '/static/'
 
 # Added manually
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+# MEDIA FILES
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# # STATIC PRECOMPILER 
+# STATIC_PRECOMPILER_COMPILERS = (
+#     ('static_precompiler.compilers.LESS', {
+#         "executable": "/usr/bin/lessc",
+#         "sourcemap_enabled": True,
+#         "global_vars": {"link-color": "red"},
+#     }),
+# )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

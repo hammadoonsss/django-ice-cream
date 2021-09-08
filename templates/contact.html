@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} Contact Us {% endblock title %}
 
 {% block body %}
 <div class="container-fluid px-0 mb-4">
-    <img src="/static/12.jfif " class="d-block w-100 mx-0 " alt="...">
+    <img src="{% static 'img/12.jfif' %} " class="d-block w-100 mx-0 " alt="...">
 </div>
 <div class="container mb-4 px-3 py-3">
     <h1 class="text-center">Contact Us</h1>
@@ -34,3 +36,14 @@
 </form>
 </div>
 {% endblock body %}
+
+{% block footer_script %}
+{% comment %} 
+
+Still need to add JS of Uploading image  
+CSS is not Working 
+URL: https://codepen.io/siremilomir/pen/jBbQGo
+
+{% endcomment %}
+
+{% endblock footer_script %}
