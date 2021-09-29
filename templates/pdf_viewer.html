@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} PDF {% endblock title %}
+
+{% block body %}
+  
+<div class="container">
+  <h1>PDF Viewer</h1>
+    <form action="/uploadFile" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file" id="file" />
+    <button type="submit"> Upload </button>
+    </form>
+
+    <a href="{{fileurl}}">{{filename}}</a>
+    <div onclick='download("{{fileurl}}","{{filename}}")'>Download</div>
+</div>
+
+
+{% endblock body %}
+{% block footer_script %}
+
+<script>
+    function download(url, name){
+        fetch(url).then(async(res)=>{
+            const dfile = await res.blob();
+            var blobURL = 
+                window.URL && window.URL.createObjectURL
+                ? window.URL.createObjectURL(dfile)
+                : window.webkitURL.createObjectURL(dfile)
+            
+            var tempLink = document.createElement("a")
+            tempLink.style.display = "none"
+            tempLink.href = blobURL
+            tempLink.setAttribute("download", name)
+
+            if(typeof tempLink.download == "undefined"){
+                tempLink.setAttribute("target", "_blank");
+            }
+
+            document.body.appendChild(tempLink)
+            tempLink.click()
+
+            setTimeout(function (){
+                document.body.removeChild(tempLink)
+                window.URL.revokeObjectURL(blobURL)
+            }, 200)
+        })
+    }
+</script>
+{% endblock footer_script %}

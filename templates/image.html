@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Image {% endblock title %}
+
+{% block body %}
+  
+<div class="container">
+  <h1>Image</h1>
+    <form method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+{% for image in images %}
+        <div class="col-md-4">
+                {{ image.name }}
+                  <img src="{{ image.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+        </div>
+{% endfor %}
+
+{% endblock body %}

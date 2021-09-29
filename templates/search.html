@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Search {% endblock title %}
+
+{% block body %}
+<center>
+    {% if searched %}
+    <h1>You serched for {{searched}}</h1>
+    <hr/>
+    <br/>
+    {% for contact in contact %}
+        <a href="{% url 'show_contact' contact.id%}">{{contact}}</a> 
+        <br/>
+    {% endfor %}
+    
+    {% else %}
+    <h1>Hey! You Forget to Search for a Contact...</h1>
+
+    {% endif %}
+</center>
+
+{% endblock body %}
+
+{% block footer_script %}
+{% endblock footer_script %}

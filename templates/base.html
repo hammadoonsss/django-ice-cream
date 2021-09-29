@@ -31,22 +31,31 @@
                   Services
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/services">50% Off</a></li>
-                  <li><a class="dropdown-item" href="#">Family Pack</a></li>
+                  <li><a class="dropdown-item" href="/services">Service%</a></li>
+                   <li><a class="dropdown-item" href="/contact_list">Contact-List</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/video">Video</a></li>
+                  <li><a class="dropdown-item" href="/image">Image</a></li>
+                  <li><a class="dropdown-item" href="/uploadFile">PDF File</a></li>
+                  <li><a class="dropdown-item" href="#">Family Pack</a></li>
                   <li><a class="dropdown-item" href="#">Lucky Today</a></li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/video">Video</a>
-              </li>
+              
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex" method="POST" action="{% url 'search' %}">
+              {% csrf_token %}
+              <input 
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Search Contact" 
+                aria-label="Search"
+                name="searched"
+                />
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
         </div>

@@ -1,3 +1,4 @@
+from typing import Tuple
 from django.db import models
 
 # Create your models here.
@@ -23,3 +24,14 @@ class Videos(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Image(models.Model):
+    name = models.CharField(max_length=50, blank=True, null=True)
+    image = models.ImageField(upload_to='images/')
+
+    class Meta:
+        verbose_name = 'image'
+        verbose_name_plural = 'image'
+
+    def __str__(self):
+        return self.name
