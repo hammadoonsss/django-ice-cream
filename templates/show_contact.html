@@ -2,18 +2,18 @@
 
 {% load static %}
 
-{% block title %} Contact List {% endblock title %}
+{% block title %} Show Contact{% endblock title %}
 
 {% block body %}
-<center>
-<h1>Show-Contact:</h1>
-<hr/>
-<h2>{{contact}}</h2>
-<hr/>
-{{contact.phone}}<br/>
-{{contact.email}}<br/>
-{{contact.desc}}<br/>
-</center>
+    <center>
+    <h1>Show-Contact:</h1>
+    <hr/>
+    <h2>{{contact}}</h2>
+    <hr/>
+    {{contact.phone}}<br/>
+    {{contact.email}}<br/>
+    {{contact.desc}}<br/>
+    </center>
 
 {% endblock body %}
 

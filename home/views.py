@@ -7,11 +7,38 @@ from django.db.models import fields
 from django.shortcuts import render,redirect, HttpResponse
 from django.views import View
 
+from django.http import HttpResponse
+from django.views.generic import View
+
 from home.forms import ImageForm
 from home.models import Contact, Image, Videos
 # Create your views here.
 
+from .utils import render_to_pdf
 
+
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        # template = get_template('test.html')
+        context = {
+            "invoice_id": 123,
+            "customer_name": "John Cooper",
+            "amount": 1399.99,
+            "today": "Today",
+        }
+        # html = template.render(context)
+        pdf = render_to_pdf('test.html', context)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "Invoice_%s.pdf" %("12341231")
+            content = "inline; filename='%s'" %(filename)
+            download = request.GET.get("download")
+            if download:
+                content = "attachment; filename='%s'" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("Not found")
+    
 
 def index(request):
 
@@ -160,10 +187,12 @@ def search_view(request):
     if request.method == "POST":
         searched = request.POST['searched']
         contact = Contact.objects.filter(name__contains = searched)
+        contactA = Contact.objects.all()
 
         context={
             'searched': searched,
-            'contact' : contact
+            'contact' : contact,
+            "contactA" : contactA
         }
         return render(request, 'search.html', context )
     

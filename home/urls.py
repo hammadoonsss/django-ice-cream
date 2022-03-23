@@ -15,4 +15,5 @@ urlpatterns = [
     path('contact_list', views.contact_list_view, name ='contact_list'),
     path('show_contact/<contact_id>', views.show_contact_view, name ='show_contact'),
     path('search', views.search_view, name = 'search'),
+    path('test_type', views.GeneratePdf.as_view(), name="test_type")
 ]
